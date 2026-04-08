@@ -1,9 +1,16 @@
+# This a one timme setup for the pipeline to work:
+# 1. Go to your repository's "Settings" > "Pages" on the left sidebar.
+# 2. Under "Build and Deployment" > "Source", change the drop down menu to "Github Actions", then save.
+# 3. Go to your repository's "Settings" > on the left sidebar click "Actions" > "General", scroll to the bottom and click "Read & write permissions" is selected, then save.
+
 name: Signage Auto-Deploy
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main"]  # This triggers the robot whenever someone pushes to main
+  workflow_dispatch:      # This adds a "Run" button so you can test it manually
 
+# This is the "Magic" part that makes it work for everyone
 permissions:
   contents: read
   pages: write
@@ -15,11 +22,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Upload Pages Artifact
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Uploads your index, app.js, and config
+          path: '.'  # This tells the robot to grab all your project files
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -1,14 +1,87 @@
-#clock {
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  font-size: 24px;
-  font-weight: bold;
+html, body {
+  margin: 0;
+  height: 100%;
 }
 
-#content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#app {
   height: 100%;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.panel {
+  background: rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+#infoPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.infoCard {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.infoCard h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+#clock {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#feedPanel {
+  overflow: hidden;
+}
+
+#feedContent {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#feedContent ul {
+  padding-left: 24px;
+}
+
+#feedContent a {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+
+#feedContent a:hover {
+  text-decoration: underline;
+}
+
+.staticImage {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
 }

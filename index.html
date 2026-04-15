@@ -5,8 +5,19 @@
     <link rel = "stylesheet" href="style.css">
 </head>
 <body>
-    <div id="clock"></div> <div id=""app">
-    <div id="content"></div>
+    <div id="app">
+            <aside id="infoPanel" class="panel">
+                <section class="infoCard">
+                    <h2>Local Time</h2>
+                    <div id="clock"></div>
+                </section>
+                <section id="weather" class="infoCard"></section>
+                <section id="staticContent" class="infoCard"></section>
+            </aside>
+
+            <main id="feedPanel" class="panel">
+                <div id="feedContent"></div>
+            </main>
     </div>
 
     <script src="app.js"></script>
